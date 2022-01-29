@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+    <style type="text/css">
+        @font-face {
+            font-family: digit;
+            src: url('digital-7_mono.ttf') format("truetype");
+        }
+
+        #bg {
+            position: absolute;
+            width: 100vw;
+            height: 100vh;
+            border: 0px;
+
+            z-index: 1;
+        }
+
+        #mainDiv {
+            position: absolute;
+            z-index: 9999;
+        }
+
+        #messages {
+            color: #fff
+        }
+
+        #loveu {
+            color: #fff
+        }
+
+        video {
+            display: none
+        }
+    </style>
+
+    <link href="css/default.css" type="text/css" rel="stylesheet">
+    <script type="text/javascript" src="js/jquery.js"></script>
+    <script type="text/javascript" src="js/garden.js"></script>
+    <script type="text/javascript" src="js/functions.js"></script>
+    <title>I Love You, Lijie, My Baby</title>
+</head>
+
+<body>
+    <video src='./media/dreamWedding.mp3' autoplay='autoplay'></video>
+    <iframe src="./bg.html" id="bg"></iframe>
+    <div id="mainDiv">
+        <div id="content">
+            <div id="code">
+                <!-- /**
+                * 2021—11—10,
+                * The world's destruction
+                */
+                Boy name = Mr ZHANG;
+                Girl name = Mrs LI;
+                // Whether on foot or 269 kilometers
+                The boy very happy;
+                // Whether it is right now or still in the distant future
+                // The boy has but one dream
+                Let the girl be the happiest girl in the world;
+                // Now, the boy is me
+                I want to tell my girl:
+                Lijie, my baby, I love you forever; -->
+                <span class="comments">/**</span><br />
+                <span class="space" /><span class="comments">* 2021—11—10,</span><br />
+                <span class="space" /><span class="comments">* The world's destruction</span><br />
+                <span class="space" /><span class="comments">*/</span><br />
+                Boy name = <span class="keyword">Mr</span> ZHANG;<br />
+                Girl name = <span class="keyword">Mrs</span> LI;<br />
+                <span class="comments">// Whether on foot or 269 kilometers</span><br />
+                The boy very happy;<br />
+                <span class="comments">// Whether it is right now or still in the distant future</span><br />
+                <span class="comments">// The boy has but one dream</span><br />
+                Let the girl be the <span class="keyword">happiest</span> girl in the world;<br />
+                <span class="comments">// Now, the boy is me</span><br />
+                <br>
+                <br>
+                I want to tell my girl:<br />
+                Lijie, my baby, I love you forever;<br />
+            </div>
+            <div id="loveHeart">
+                <canvas id="garden"></canvas>
+                <div id="words">
+                    <div id="messages">
+                        亲爱的李婕，这是我们的相爱记录。
+                        <div id="elapseClock"></div>
+                    </div>
+                    <div id="loveu">
+                        爱你直到永永远远。<br />
+                        <div class="signature">- 你的张先生</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script type="text/javascript">
+        var offsetX = $("#loveHeart").width() / 2;
+        var offsetY = $("#loveHeart").height() / 2 - 55;
+        var together = new Date();
+        together.setFullYear(2021, 10, 10); // 输出为2021年11月6号
+        together.setHours(17);
+        together.setMinutes(57);
+        together.setSeconds(0);
+        together.setMilliseconds(0);
+
+        if (!document.createElement('canvas').getContext) {
+            var msg = document.createElement("div");
+            msg.id = "errorMsg";
+            msg.innerHTML =
+                "Your browser doesn't support HTML5!<br/>Recommend use Chrome 14+/IE 9+/Firefox 7+/Safari 4+";
+            document.body.appendChild(msg);
+            $("#code").css("display", "none")
+            $("#copyright").css("position", "absolute");
+            $("#copyright").css("bottom", "10px");
+            document.execCommand("stop");
+        } else {
+            setTimeout(function () {
+                startHeartAnimation();
+            }, 5000);
+
+            timeElapse(together);
+            setInterval(function () {
+                timeElapse(together);
+            }, 500);
+
+            adjustCodePosition();
+            $("#code").typewriter();
+        }
+    </script>
+</body>
+
+</html>
